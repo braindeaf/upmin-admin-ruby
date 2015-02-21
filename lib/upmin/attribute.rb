@@ -76,10 +76,12 @@ module Upmin
           return :unknown
         elsif class_sym == :fixnum
           return :integer
-        elsif class_sym == :big_decimal
+        elsif class_sym == :big_decimal || class_sym == :money
           return :decimal
         elsif class_sym == :"active_support/time_with_zone"
           return :datetime
+        elsif class_sym == :"paperclip/attachment"
+          return :file
         else
           # This should prevent any classes from being skipped, but we may not have an exhaustive list yet.
           return class_sym
